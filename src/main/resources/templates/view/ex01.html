@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>타임리프 출력과 변수</h3>
+	<!-- 타임리프 문법을 사용하려면 속성 앞에 th를 붙입니다. -->
+	
+	<!-- <h3 th:text="helloworld"></h3> --> <!-- 이렇게 쓰려면 공백 없어야 함 -->
+	<h3 th:text="${'hello world'}"></h3>
+	<h3>[[${'hello world'}]]</h3>
+	
+	<h3 th:text="${1 == 1}"></h3> <!-- true -->
+	<h3>[[${1 == 1}]]</h3>
+	
+	<h3 th:text="${true and false}"></h3> <!-- false -->
+	<h3>[[${true and false}]]</h3>
+	
+	<h3>[[${'가' eq '가나다'}]]</h3> <!-- false, eq는 같냐? -->
+	
+	<hr/>
+	
+	<!-- 변수 선언 -->
+	<!-- 가독성 면에서는 아래보다 이게 나음 -->
+	<div th:with="a = 10"> <!-- a는 10으로 선언 -->
+		[[${a}]] <!-- 10 나옴 -->
+	</div>
+	
+	<div th:with="a = '홍길동'" th:text="${a}"> <!-- a는 10으로 선언 -->
+		<!-- 홍길동 나옴 -->
+	</div>
+	
+	<!-- value 속성의 사용 -->
+	<div th:with="a = '이순신' ">
+		<input type="text" th:value="${a}">
+	</div>
+	
+	<hr/>
+	
+	<!-- if문 / elseif문 자체가 없음-->
+	<div th:with="a = 10">
+		<span th:if="${a == 10}">[[${a + '입니다'}]]</span>
+		<span th:id="${a == 20}">[[${a + '입니다'}]]</span>		
+	</div>
+
+	<!-- if else문: unless는 동일한 조건을 적습니다. -->
+	<div th:with="a = 10">
+		<span th:if="${a} != 10">10이 아닙니다</span>
+		<span th:unless="${a} != 10">unless의 조건은 if의 조건과 같아야 함<br/>
+									 알아서 반대로 처리</span>
+	</div>
+	
+	<!-- 3항 연산자 -->
+	<div th:with="a = 10">
+		[[${a == 10 ? "참" : "거짓"}]] <br/>
+		[[${a} == 10 ? '참' : '거짓']]
+	</div>
+	
+</body>
+</html>

@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.basic.command.BuilderVO;
 import com.example.basic.command.BuilderVO.Builder;
+import com.example.basic.command.BuilderVO2;
 import com.example.basic.controller.HomeController;
 
 @SpringBootTest //스프링부트 테스트 클래스
@@ -20,6 +21,7 @@ public class BootTest {
 //	}
 	
 	//builder 패턴 객체의 사용
+	//자주 사용하지는 않지만 형태나 사용하는 방법을 알아두세요
 	@Test
 	public void testCode02() {
 //		Builder xx = BuilderVO.builder();
@@ -32,6 +34,13 @@ public class BootTest {
 										  .setName("집가자")
 									      .build();
 		System.out.println(vo.toString());
+		
+		BuilderVO2 vo2 = BuilderVO2.builder()
+				   					  .name("동키") //name 저장
+				   					  .age(30) //int 저장
+				   					  .build();
+		
+		System.out.println(vo2.toString());
 		
 	}
 }

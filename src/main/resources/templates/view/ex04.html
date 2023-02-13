@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	[[${name}]]<br/>
+	[[${vo}]]<br/>
+	
+	<script th:inline="javascript">
+	 /* console.log('[[${name}]]');
+		console.log('[[${vo}]]'); */
+		var aa = '[[${name}]]';
+		var bb = '[[${vo}]]';
+		
+		console.log(JSON.parse(aa));
+		console.log(JSON.parse(bb));
+	</script>
+
+</body>
+</html>

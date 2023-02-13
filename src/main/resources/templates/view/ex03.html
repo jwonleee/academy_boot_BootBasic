@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>타임리프 block문 = 가짜 태그</h3>
+	[[${list}]]
+	
+	<hr/>
+	
+	<!-- block은 별도의 태그를 사용하지 않고, 마치 중괄호처럼 사용하고 싶을 때 -->
+	<ul>
+		<th:block th:each="vo : ${list}">
+			<li>[[${vo.name}]]</li>
+		</th:block>
+	</ul>
+	
+	<hr/>
+	<h3>타임리프 a태그</h3>
+	<a href="test?a=10">일반 a태그</a> <!-- 그냥 href로 정적인 값 넘기는 것은 가능 -->
+	<a th:href="@{test?a=10}">타임리프 a태그</a>
+	
+	<!-- 
+		a태그로 값을 넘기는 방법
+		경로(키=값, 키=값)
+		
+		경로/변수/변수(변수=값, 변수=값)
+	 -->
+	
+	<ul>
+		<li th:each="vo : ${list}">
+			<!-- <a href="test?age=${vo.age}">키값 넘기기</a> --> <!-- 가변값은 안 넘어감 -->
+			<!-- <a th:href="@{test?age=${vo.age}}">키값 넘기기</a> --> <!-- 이렇게 ? 써도 안 넘어감 -->
+			<a th:href="@{test(age=${vo.age}, name=${vo.name})}">키값 넘기기(쿼리스트링)</a> <!-- 개발자 도구에서는 쿼리스트링 형태(?)로 나타남 -->
+			
+			<a th:href="@{ test2/{age}/{name} (age=${vo.age}, name=${vo.name}) }">키값 넘기기(쿼리파라미터)</a>
+		</li>
+	</ul>
+
+</body>
+</html>
