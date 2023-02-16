@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> <!-- 타임리프 명시적 선언 -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>유효성 검사</h3>
+	
+	<form action="actionForm" method="post">
+		<!-- 처음 화면에 진입할 때는 vo가 없음, jstl은 허용, 타임리프는 허용x -->
+		<!-- null인 경우 에러가 발생하게 되기 때문에 null처리를 진행해야 합니다. -->
+		이름: <input type="text" name="name" th:value="${vo != null ? vo.name : ''}"/>[[${valid_name}]]
+		급여: <input type="text" name="salary" th:value="${vo != null ? vo.salary : ''}"/>[[${valid_salary}]]
+		전화번호: <input type="text" name="phone" th:value="${vo != null ? vo.phone : ''}"/>[[${valid_phone}]]
+		이메일: <input type="text" name="email" th:value="${vo != null ? vo.email : ''}"/>[[${valid_email}]]
+		
+		<input type="submit" value="확인"/>	
+	</form>
+	
+</body>
+</html>

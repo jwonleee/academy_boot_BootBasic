@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SimpleVO {
 
-	private int num;
+	private String num;
 	private String name;
 	private String id;
 	

@@ -123,18 +123,18 @@ public class ThymeleafController {
 	@GetMapping("/quiz01")
 	public String quiz01(Model model) {
 		
-		SimpleVO vo = new SimpleVO(1, "제니", "jennybyj");
+		SimpleVO vo = new SimpleVO("1", "제니", "jennybyj");
 		model.addAttribute("vo",vo);
 		
 		//build로 넣어줄 수도 있음
-		//SimpleVO vo2 = SimpleVO.builder().num(2).name("로제").id("rose").build();
+		//SimpleVO vo2 = SimpleVO.builder().num("2").name("로제").id("rose").build();
 		
 		return "view/quiz01";
 	}
 	
 	//쿼리스트링
 	@GetMapping("/quiz_result01")
-	public String quiz_result01(@RequestParam("num") int num,
+	public String quiz_result01(@RequestParam("num") String num,
 								@RequestParam("name") String name,
 								@RequestParam("id") String id,
 								Model model) {
