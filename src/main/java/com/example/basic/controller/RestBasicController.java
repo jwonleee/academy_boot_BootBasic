@@ -107,7 +107,7 @@ public class RestBasicController {
    //{"id": "aaa", "name": "bbb"}
    
    //cors - 기본적으로 서버가 다르면 요청을 거절하는데 (특정 서버에 대하여 허용)
-   //@CrossOrigin(*) - 모든 곳에서 다열림
+   //@CrossOrigin(*) -모든 곳에서 다 열림   or   필터를 통한 자바 설정
    @CrossOrigin("http://localhost:3000")
    @PostMapping("/getJson")
    public String getJson(@RequestBody SimpleVO vo) {
@@ -153,7 +153,37 @@ public class RestBasicController {
 	   return entity;
    }
    
+   //jquery - ajax 예시
+   @CrossOrigin({"http://127.0.0.1:5502",
+		   		 "http://localhost:5502"}) //중괄호 문법 가능
+   @PostMapping("/postAjax")
+   public Map<String, Object> postAjax(@RequestBody SimpleVO simpleVo) {
+	   
+	   //받은 데이터
+	   System.out.println(simpleVo.toString());
+	   
+	   //보내는 데이터
+	   Map<String, Object> map = new HashMap<>();
+	   
+	   SimpleVO vo = new SimpleVO("1", "홍길동", "aaa123");
+	   map.put("total", 100);
+	   map.put("data", vo);
+	   
+	   return map;
+   }
    
+   //
+   @CrossOrigin("*") //전부 허용
+//   @CrossOrigin("http://127.0.0.1:5502")
+   @GetMapping("/getAjax/{input}")
+   public String getAjax(@PathVariable("input") String input) { //주소에 실어서 넘어가니까 @requestBody(본문에 실을 때) 필요없음
+	   
+	   System.out.println(input);
+	   
+	   return "success";
+   }
+   	
+   	
    
    
 }
