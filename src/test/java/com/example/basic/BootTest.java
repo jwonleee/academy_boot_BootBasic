@@ -24,6 +24,7 @@ public class BootTest {
 	//자주 사용하지는 않지만 형태나 사용하는 방법을 알아두세요
 	@Test
 	public void testCode02() {
+//		기존 set메서드의 사용
 //		Builder xx = BuilderVO.builder();
 //		xx = xx.setAge(10);
 //		xx = xx.setName("집가자");
@@ -33,6 +34,12 @@ public class BootTest {
 		BuilderVO vo = BuilderVO.builder().setAge(10)
 										  .setName("집가자")
 									      .build();
+		System.out.println(vo.toString());
+		
+		vo = BuilderVO.builder().setAge(20).
+				  setName("ddd")
+			      .build();
+		
 		System.out.println(vo.toString());
 		
 		BuilderVO2 vo2 = BuilderVO2.builder()
