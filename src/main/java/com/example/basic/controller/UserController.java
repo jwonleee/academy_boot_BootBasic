@@ -39,8 +39,17 @@ public class UserController {
 		return "user/login"; //실패시에 그냥 다시 로그인 페이지
 	}
 	
+	//특정 유저들만 접근할 수 있는 페이지
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(/* HttpSession session */) {
+		
+		//세션 검사
+//		if(session.getAttribute("user_id") == null) {
+//			return "redirect:/user/login";
+//		}
+		
+		System.out.println("컨트롤러 실행");
+		
 		return "user/mypage";
 	}
 	
